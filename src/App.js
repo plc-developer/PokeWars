@@ -1,5 +1,7 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import PokeCards from "./PokeCards/PokeCards";
+import { fetchPokemons } from "./Helpers/InitialFunctions";
 
 const BodyContainer = styled.div`
   display: flex;
@@ -16,11 +18,22 @@ const AppContainer = styled.div`
 `;
 
 function App() {
+  const [pokemons, setPokemons] = useState([]);
+
+  const getPokemons = async () => {
+      setPokemons(await fetchPokemons(100));
+  }
+
+  useEffect(()=>{
+    getPokemons();
+  },[]);
+
   return (
     <BodyContainer>
       <AppContainer>
-        <h1>POKEWARS</h1>
-        <PokeCards />
+        {pokemons && pokemons.map(pokemon => (
+          <PokeCards url={pokemon.url}/>
+        ))}
       </AppContainer>
     </BodyContainer>
   );
