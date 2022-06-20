@@ -21,7 +21,7 @@ function App() {
   const [pokemons, setPokemons] = useState([]);
 
   const getPokemons = async () => {
-      setPokemons(await fetchPokemons(100));
+      setPokemons(await fetchPokemons(6,21));
   }
 
   useEffect(()=>{
@@ -31,9 +31,12 @@ function App() {
   return (
     <BodyContainer>
       <AppContainer>
-        {pokemons && pokemons.map(pokemon => (
-          <PokeCards url={pokemon.url}/>
-        ))}
+        <div style={{display: 'flex', flexWrap: 'wrap', flexDirection: 'row', justifyContent: 'center'}}>
+          {pokemons && pokemons.map(pokemon => (
+            <PokeCards url={pokemon.url}/>
+          ))}
+        </div>
+        <button style={{padding: '30px'}}>GENERATE</button>
       </AppContainer>
     </BodyContainer>
   );

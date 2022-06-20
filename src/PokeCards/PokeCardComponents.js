@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const PokeCardContainer = styled.div`
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
     @property --rotate {
         syntax: "<angle>";
         initial-value: 132deg;
@@ -21,7 +22,7 @@ const PokeCardContainer = styled.div`
     flex-direction: column;
     font-size: 1.5em;
     color: rgb(88 199 250 / 0%);
-    font-family: cursive;
+    font-family: 'Roboto', sans-serif;
 
     ${props => props.isLegend ? 
     `&::before{
